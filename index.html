@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pocket P&L</title>
+<title>Pocket P&L · ppnl-build-2026-02-14-nyc-1</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -196,7 +196,7 @@ button,input{ -webkit-tap-highlight-color: transparent; }
   </div>
   <div class="hdr-r">
     <div class="live"></div>
-    <span id="liveMeta">Loading…</span>
+    <span id="liveMeta">Loading…</span><span id="buildTag" style="opacity:.55">ppnl-build-2026-02-14-nyc-1</span>
     <button class="reset-btn" id="resetBtn" onclick="resetAll()">✕ Clear Selection</button>
   </div>
 </div>
@@ -506,8 +506,8 @@ async function loadFromSheet(){
 
 // Save edits back to Google Sheets via Apps Script Web App (doPost)
 async function saveRowEdits(rowId, updates, btn){
-  const _URL = (window.APPS_SCRIPT_URL || "");
-  const _TOKEN = (window.APPS_SCRIPT_TOKEN || "");
+  const _URL = (typeof APPS_SCRIPT_URL !== "undefined" ? APPS_SCRIPT_URL : (window.APPS_SCRIPT_URL || ""));
+  const _TOKEN = (typeof APPS_SCRIPT_TOKEN !== "undefined" ? APPS_SCRIPT_TOKEN : (window.APPS_SCRIPT_TOKEN || ""));
 
   if(!rowId){
     alert("RowID missing — add RowID column in your sheet and populate it.");
